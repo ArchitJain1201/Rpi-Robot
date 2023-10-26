@@ -1,12 +1,14 @@
+import RPi.GPIO as GPIO
+
 class GPIOHandler:
     def __init__(self):
-        pass  # Initialize GPIO here
+        GPIO.setmode(GPIO.BCM)
 
     def read_pin(self, pin):
-        pass  # Read pin logic here
+        return GPIO.input(pin)
 
     def write_pin(self, pin, value):
-        pass  # Write pin logic here
+        GPIO.output(pin, value)
 
 class CameraHandler:
     def __init__(self):

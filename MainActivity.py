@@ -18,6 +18,13 @@ customtkinter.set_default_color_theme("dark-blue")
 class App(customtkinter.CTk):
 
     def __init__(self, root):
+
+        # Initialize GPIO for the Setting button
+        GPIO.setmode(GPIO.BCM)  
+        self.setting_pin = 17  # Assuming pin 17 for the Setting button
+        GPIO.setup(self.setting_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+
+
         # Setting the main window properties
         self.root = root
         self.root.title("PiApp")
@@ -25,7 +32,8 @@ class App(customtkinter.CTk):
         self.root.configure(bg="white")
         self.use_case = UseCase(self)
 
-        # Creating widgets        
+        # Creating widgets   
+        # self.settings_button = SettingButton(self.root, command=self.handle_setting_button)     
         self.settings_button = SettingButton(self.root, command=lambda: UseCase.button_callback("Setting"))
         self.settings_button.pack(anchor="ne")
 
@@ -55,6 +63,18 @@ class App(customtkinter.CTk):
         # Initialize GPIO (mock code, uncomment and modify for actual use on Raspberry Pi)
         # GPIO.setmode(GPIO.BCM)
         # GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP)  # Assuming pin 17 for camera input
+
+        # def handle_setting_button(self):
+        #     # Read the GPIO input
+        #     button_state = GPIO.input(self.setting_pin)
+            
+        #     # Handle the GPIO input and display output
+        #     if button_state == GPIO.LOW:
+        #         print("Setting button pressed!")
+        #         # Any other actions or logic you want to perform
+        #     else:
+        #         print("Setting button not pressed!")
+
 
 root = tk.Tk()
 app = App(root)

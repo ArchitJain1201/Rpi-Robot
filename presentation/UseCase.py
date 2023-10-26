@@ -1,5 +1,7 @@
 from tkinter import filedialog
 import tkinter as tk
+import RPi.GPIO as GPIO
+
 
 class UseCase:
     def __init__(self, app):
@@ -23,3 +25,17 @@ class UseCase:
 
         self.app.live_camera = not self.app.live_camera
         
+    def handle_setting_button(self):
+        # Read the GPIO input
+        button_state = GPIO.input(self.app.setting_pin)
+        
+        # Handle the GPIO input and display output
+        if button_state == GPIO.LOW:
+            print("Setting button pressed!")
+            # Any other actions or logic you want to perform
+        else:
+            print("Setting button not pressed!")
+
+    def __del__(self):
+        GPIO.cleanup()
+
