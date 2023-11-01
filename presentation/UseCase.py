@@ -1,6 +1,6 @@
 from tkinter import filedialog
 import tkinter as tk
-import RPi.GPIO as GPIO
+import serial
 
 
 class UseCase:
@@ -24,18 +24,25 @@ class UseCase:
             # Mock code for displaying camera input, replace with actual camera input code
 
         self.app.live_camera = not self.app.live_camera
-        
-    def handle_setting_button(self):
-        # Read the GPIO input
-        button_state = GPIO.input(self.app.setting_pin)
-        
-        # Handle the GPIO input and display output
-        if button_state == GPIO.LOW:
-            print("Setting button pressed!")
-            # Any other actions or logic you want to perform
-        else:
-            print("Setting button not pressed!")
 
-    def __del__(self):
-        GPIO.cleanup()
+    def send_serial_message(message, com_port='/dev/ttyUSB0', baud_rate=9600):
+        with serial.Serial(com_port, baud_rate) as ser:
+            ser.write(message.encode())
+
+    send_serial_message("Hello from Raspberry Pi!")
+
+        
+    # def handle_setting_button(self):
+    #     # Read the GPIO input
+    #     button_state = GPIO.input(self.app.setting_pin)
+        
+    #     # Handle the GPIO input and display output
+    #     if button_state == GPIO.LOW:
+    #         print("Setting button pressed!")
+    #         # Any other actions or logic you want to perform
+    #     else:
+    #         print("Setting button not pressed!")
+
+    # def __del__(self):
+    #     GPIO.cleanup()
 

@@ -20,9 +20,9 @@ class App(customtkinter.CTk):
     def __init__(self, root):
 
         # Initialize GPIO for the Setting button
-        GPIO.setmode(GPIO.BCM)  
-        self.setting_pin = 17  # Assuming pin 17 for the Setting button
-        GPIO.setup(self.setting_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        # GPIO.setmode(GPIO.BCM)  
+        # self.setting_pin = 17  # Assuming pin 17 for the Setting button
+        # GPIO.setup(self.setting_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 
         # Setting the main window properties
@@ -34,7 +34,7 @@ class App(customtkinter.CTk):
 
         # Creating widgets   
         # self.settings_button = SettingButton(self.root, command=self.handle_setting_button)     
-        self.settings_button = SettingButton(self.root, command=lambda: UseCase.button_callback("Setting"))
+        self.settings_button = SettingButton(self.root, command=lambda: UseCase.send_serial_message("Setting"))
         self.settings_button.pack(anchor="ne")
 
         # Camera or Image display
