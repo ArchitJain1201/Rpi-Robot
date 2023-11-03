@@ -29,7 +29,8 @@ class UseCase:
                 new_width = int(screen_height * aspect_ratio)
 
                 # Resize the image to fit the y-axis of the screen
-                image = image.resize((new_width, screen_height), Image.Resampling.LANCZOS)
+                #image = image.resize((new_width, screen_height), Image.Resampling.LANCZOS)
+                image = image.resize((new_width, screen_height), Image.ANTIALIAS)
                 self.image = ImageTk.PhotoImage(image)
 
                 # Calculate position to center the image on the screen
