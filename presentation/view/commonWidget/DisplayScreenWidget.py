@@ -8,4 +8,4 @@ class DisplayScreenWidget(tk.Frame):
         self.canvas.pack(expand=True, fill="both")
 
     def create_image(self, x, y, **kwargs):
-        return self.canvas.create_image(x, y, anchor= "center", **kwargs)
+        return self.canvas.create_image(x, y, **kwargs)

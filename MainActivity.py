@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import PhotoImage, filedialog
 import customtkinter
-import serial
+# import serial
 
 from presentation.UseCase import UseCase
 from presentation.view.CommandButton import CommandButton
