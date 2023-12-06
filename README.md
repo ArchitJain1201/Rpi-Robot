@@ -19,6 +19,7 @@ Rpi-Robot is a project designed to provide a GUI interface for controlling a rob
 - Libraries and modules to install:
   - `tkinter`
   - `customtkinter`
+  - `pillow`
   - If deploying on Raspberry Pi, ensure to have `RPi.GPIO` module installed.
 
 ### Installation
